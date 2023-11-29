@@ -9,9 +9,11 @@ import (
 )
 
 func EnvDBConn() string {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if os.Getenv("GIN_MODE") != "release" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error loading .env file")
+		}
 	}
 
 	dbhost := os.Getenv("DB_HOST")
