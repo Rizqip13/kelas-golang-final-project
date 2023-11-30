@@ -1,0 +1,1315 @@
+{
+	"info": {
+		"_postman_id": "63660d5e-a418-486d-8502-c5391f1da264",
+		"name": "Base Trade API - Rizqi Putra M",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31462843"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"rizqi pm\",\n    \"email\": \"hi@rizqi.zip\",\n    \"password\": \"pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"rizqi pm\",\n    \"email\": \"hi@rizqi.zip\",\n    \"password\": \"pass123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Nov 2023 17:22:46 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "283"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"uuid\": \"d195412a-ea87-4edd-b6fe-85b482e05456\",\n        \"name\": \"rizqi pm\",\n        \"email\": \"hi@rizqi.zip\",\n        \"password\": \"$2a$10$iEPvkHzkyaFgIfiy//mxf.jGzTSlPAcmFxN0NvAs/SSmFpYDC6h9W\",\n        \"created_at\": \"2023-11-29T00:22:29.508+07:00\",\n        \"updated_at\": \"2023-11-29T00:22:29.508+07:00\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();",
+									"pm.environment.set(\"TOKEN\", res.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true
+						},
+						"followOriginalHttpMethod": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"hi@rizqi.zip\",\n    \"password\": \"pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"hi@rizqi.zip\",\n    \"password\": \"pass123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Nov 2023 18:04:14 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "189"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhpQHJpenFpLnppcCIsImV4cCI6IjIwMjMtMTEtMzBUMDE6MDQ6MDYuNjk0NDU4KzA3OjAwIiwiaWQiOjF9.f4WQHMGY63iL57JZQIK3-Fu4_lZECww6Ijoex7KQY3M\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Register - user2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Emir\",\n    \"email\": \"Emir@example.com\",\n    \"password\": \"pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register - user2",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Emir\",\n    \"email\": \"Emir@example.com\",\n    \"password\": \"pass123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Nov 2023 10:15:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"uuid\": \"3213e256-385e-487c-be35-a32375687349\",\n        \"name\": \"Emir\",\n        \"email\": \"Emir@example.com\",\n        \"password\": \"$2a$10$LKiWv6UwUNXpZLcdufExhOFJR9zHvYzbAYk8EVHpK.7Inz.J7GIku\",\n        \"products\": null,\n        \"created_at\": \"2023-11-30T17:15:35.631+07:00\",\n        \"updated_at\": \"2023-11-30T17:15:35.631+07:00\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Login - user2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();",
+									"pm.environment.set(\"TOKEN\", res.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true
+						},
+						"followOriginalHttpMethod": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"Emir@example.com\",\n    \"password\": \"pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login - user2",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"Emir@example.com\",\n    \"password\": \"pass123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Nov 2023 10:16:05 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "195"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkVtaXJAZXhhbXBsZS5jb20iLCJleHAiOiIyMDIzLTEyLTAxVDE3OjE2OjA1LjU2OTAyMiswNzowMCIsImlkIjoyfQ.7AaW4v5GrDkb0Uj_ID4-hQUG4Im56CO8elU3Jj_q1Fo\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Variants",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products/variants?page=1&limit=10&search=mac",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"variants"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "mac"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get All",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{BASE_URL}}/products/variants",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"products",
+												"variants"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Nov 2023 18:49:35 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1063"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"uuid\": \"d8d9f0c5-e95f-4d97-a79d-f82abb15523a\",\n            \"variant_name\": \"Macbook Air M1\",\n            \"quantity\": 100,\n            \"ProductID\": 2,\n            \"Product\": {\n                \"id\": 2,\n                \"uuid\": \"4f36537c-8110-4ffa-a725-19077e70abaf\",\n                \"name\": \"Komputer\",\n                \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701283070/BasicTradeAPI/anak%20intern.jpg\",\n                \"AdminID\": 1,\n                \"Admin\": null,\n                \"variants\": null,\n                \"created_at\": \"2023-11-30T01:37:51.475+07:00\",\n                \"updated_at\": \"2023-11-30T01:37:51.475+07:00\"\n            },\n            \"created_at\": \"2023-11-30T01:40:43.567+07:00\",\n            \"updated_at\": \"2023-11-30T01:40:43.567+07:00\"\n        },\n        {\n            \"id\": 2,\n            \"uuid\": \"50125866-7b12-4281-891c-c27dd2b5a83d\",\n            \"variant_name\": \"Think Pad x250\",\n            \"quantity\": 14,\n            \"ProductID\": 2,\n            \"Product\": {\n                \"id\": 2,\n                \"uuid\": \"4f36537c-8110-4ffa-a725-19077e70abaf\",\n                \"name\": \"Komputer\",\n                \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701283070/BasicTradeAPI/anak%20intern.jpg\",\n                \"AdminID\": 1,\n                \"Admin\": null,\n                \"variants\": null,\n                \"created_at\": \"2023-11-30T01:37:51.475+07:00\",\n                \"updated_at\": \"2023-11-30T01:37:51.475+07:00\"\n            },\n            \"created_at\": \"2023-11-30T01:49:28.239+07:00\",\n            \"updated_at\": \"2023-11-30T01:49:28.239+07:00\"\n        }\n    ]\n}"
+								},
+								{
+									"name": "search",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{BASE_URL}}/products/variants?page=1&limit=10&search=mac",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"products",
+												"variants"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "search",
+													"value": "mac"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Nov 2023 12:30:26 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1123"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 6,\n            \"uuid\": \"3f50b968-9d4b-4ae5-87dc-4714f37575cf\",\n            \"variant_name\": \"Imac\",\n            \"quantity\": 1,\n            \"ProductID\": 3,\n            \"Product\": {\n                \"id\": 3,\n                \"uuid\": \"bfcbf772-c45a-45b5-b7bc-38a0c360d4bc\",\n                \"name\": \"Komputer Emir\",\n                \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701283070/BasicTradeAPI/anak%20intern.jpg\",\n                \"AdminID\": 3,\n                \"Admin\": null,\n                \"variants\": null,\n                \"created_at\": \"2023-11-30T17:27:07.858+07:00\",\n                \"updated_at\": \"2023-11-30T17:27:54.758+07:00\"\n            },\n            \"created_at\": \"2023-11-30T19:28:46.964+07:00\",\n            \"updated_at\": \"2023-11-30T19:28:46.964+07:00\"\n        },\n        {\n            \"id\": 5,\n            \"uuid\": \"50e781f1-bb30-4d99-a466-6312db9b3f07\",\n            \"variant_name\": \"Macbook\",\n            \"quantity\": 22,\n            \"ProductID\": 3,\n            \"Product\": {\n                \"id\": 3,\n                \"uuid\": \"bfcbf772-c45a-45b5-b7bc-38a0c360d4bc\",\n                \"name\": \"Komputer Emir\",\n                \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701283070/BasicTradeAPI/anak%20intern.jpg\",\n                \"AdminID\": 3,\n                \"Admin\": null,\n                \"variants\": null,\n                \"created_at\": \"2023-11-30T17:27:07.858+07:00\",\n                \"updated_at\": \"2023-11-30T17:27:54.758+07:00\"\n            },\n            \"created_at\": \"2023-11-30T19:28:39.184+07:00\",\n            \"updated_at\": \"2023-11-30T19:28:39.184+07:00\"\n        }\n    ],\n    \"pagination\": {\n        \"Limit\": 10,\n        \"Offset\": 0,\n        \"Page\": 1,\n        \"LastPage\": 1,\n        \"Total\": 2\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get by UUID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products/variants/:uuid",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"variants",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "50125866-7b12-4281-891c-c27dd2b5a83d",
+											"description": "uuid of variant"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get by UUID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{BASE_URL}}/products/variants/:uuid",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"products",
+												"variants",
+												":uuid"
+											],
+											"variable": [
+												{
+													"key": "uuid",
+													"value": "d8d9f0c5-e95f-4d97-a79d-f82abb15523a",
+													"description": "uuid of variant"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Nov 2023 18:47:58 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "535"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"uuid\": \"d8d9f0c5-e95f-4d97-a79d-f82abb15523a\",\n        \"variant_name\": \"Macbook Air M1\",\n        \"quantity\": 100,\n        \"ProductID\": 2,\n        \"Product\": {\n            \"id\": 2,\n            \"uuid\": \"4f36537c-8110-4ffa-a725-19077e70abaf\",\n            \"name\": \"Komputer\",\n            \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701283070/BasicTradeAPI/anak%20intern.jpg\",\n            \"AdminID\": 1,\n            \"Admin\": null,\n            \"variants\": null,\n            \"created_at\": \"2023-11-30T01:37:51.475+07:00\",\n            \"updated_at\": \"2023-11-30T01:37:51.475+07:00\"\n        },\n        \"created_at\": \"2023-11-30T01:40:43.567+07:00\",\n        \"updated_at\": \"2023-11-30T01:40:43.567+07:00\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "variant_name",
+											"value": "HPE",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "39",
+											"type": "text"
+										},
+										{
+											"key": "product_id",
+											"value": "bfcbf772-c45a-45b5-b7bc-38a0c360d4bc",
+											"description": "uuid of product",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/products/variants",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"variants"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "variant_name",
+													"value": "Macbook Air M1",
+													"type": "text"
+												},
+												{
+													"key": "quantity",
+													"value": "100",
+													"type": "text"
+												},
+												{
+													"key": "product_id",
+													"value": "4f36537c-8110-4ffa-a725-19077e70abaf",
+													"description": "uuid of product",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/products/variants",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"products",
+												"variants"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Nov 2023 18:40:43 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "229"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"uuid\": \"d8d9f0c5-e95f-4d97-a79d-f82abb15523a\",\n        \"variant_name\": \"Macbook Air M1\",\n        \"quantity\": 100,\n        \"ProductId\": 2,\n        \"Product\": null,\n        \"created_at\": \"2023-11-30T01:40:43.567+07:00\",\n        \"updated_at\": \"2023-11-30T01:40:43.567+07:00\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "variant_name",
+											"value": "Think Pad X400",
+											"description": "string",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "8",
+											"description": "integer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/products/variants/:uuid",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"variants",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "9922692f-4f23-4036-a168-ddf0da18d26b",
+											"description": "uuid of variant"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "variant_name",
+													"value": "Think Pad X400",
+													"description": "string",
+													"type": "text"
+												},
+												{
+													"key": "quantity",
+													"value": "8",
+													"description": "integer",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/products/variants/:uuid",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"products",
+												"variants",
+												":uuid"
+											],
+											"variable": [
+												{
+													"key": "uuid",
+													"value": "50125866-7b12-4281-891c-c27dd2b5a83d",
+													"description": "uuid of variant"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Nov 2023 18:55:54 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "533"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"uuid\": \"50125866-7b12-4281-891c-c27dd2b5a83d\",\n        \"variant_name\": \"Think Pad X400\",\n        \"quantity\": 8,\n        \"ProductID\": 2,\n        \"Product\": {\n            \"id\": 2,\n            \"uuid\": \"3bbe551a-fc70-4466-a12d-8178d3d42466\",\n            \"name\": \"Komputer\",\n            \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701283070/BasicTradeAPI/anak%20intern.jpg\",\n            \"AdminID\": 1,\n            \"Admin\": null,\n            \"variants\": null,\n            \"created_at\": \"2023-11-30T01:37:51.475+07:00\",\n            \"updated_at\": \"2023-11-30T01:37:51.475+07:00\"\n        },\n        \"created_at\": \"2023-11-30T01:49:28.239+07:00\",\n        \"updated_at\": \"2023-11-30T01:55:54.142+07:00\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products/variants/:uuid",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"variants",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "9922692f-4f23-4036-a168-ddf0da18d26b",
+											"description": "uuid of variant"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "kom",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "search page 2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products?limit=1&page=2&search=kom",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "search",
+											"value": "kom"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Nov 2023 12:12:07 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "595"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 3,\n            \"uuid\": \"bfcbf772-c45a-45b5-b7bc-38a0c360d4bc\",\n            \"name\": \"Komputer Emir\",\n            \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701283070/BasicTradeAPI/anak%20intern.jpg\",\n            \"AdminID\": 3,\n            \"Admin\": {\n                \"id\": 3,\n                \"uuid\": \"2dca3c72-db3f-44a5-97bf-abc394c7cf03\",\n                \"name\": \"Emir\",\n                \"email\": \"Emir@example.com\",\n                \"password\": \"$2a$10$Vz9qFxcPk60USfMZRBM60O6bNQ7RtPwUU8Lw1ruTnnLXf04lX/wau\",\n                \"products\": null,\n                \"created_at\": \"2023-11-30T17:23:31.724+07:00\",\n                \"updated_at\": \"2023-11-30T17:23:31.724+07:00\"\n            },\n            \"variants\": [],\n            \"created_at\": \"2023-11-30T17:27:07.858+07:00\",\n            \"updated_at\": \"2023-11-30T17:27:54.758+07:00\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "search page 1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products?limit=1&page=1&search=kom",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "search",
+											"value": "kom"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Nov 2023 12:23:16 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "811"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"uuid\": \"9195c32e-f1e7-4bd7-853c-2ebb590f993e\",\n            \"name\": \"Komputer Rizqi\",\n            \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701283070/BasicTradeAPI/anak%20intern.jpg\",\n            \"AdminID\": 1,\n            \"Admin\": {\n                \"id\": 1,\n                \"uuid\": \"664d1d60-5ed5-43ba-8bcf-fb7fbf4d83cf\",\n                \"name\": \"rizqi pm\",\n                \"email\": \"hi@rizqi.zip\",\n                \"password\": \"$2a$10$SSpRpHfRGAWMy1XtYSnOc.HJkjXAMKOMNX/KjD.aFeOxjw1bWOiZK\",\n                \"products\": null,\n                \"created_at\": \"2023-11-29T16:49:12.633+07:00\",\n                \"updated_at\": \"2023-11-29T16:49:12.633+07:00\"\n            },\n            \"variants\": [\n                {\n                    \"id\": 4,\n                    \"uuid\": \"9922692f-4f23-4036-a168-ddf0da18d26b\",\n                    \"variant_name\": \"Lenovo Yoga\",\n                    \"quantity\": 2,\n                    \"ProductID\": 4,\n                    \"Product\": null,\n                    \"created_at\": \"2023-11-30T17:28:53.566+07:00\",\n                    \"updated_at\": \"2023-11-30T17:28:53.566+07:00\"\n                }\n            ],\n            \"created_at\": \"2023-11-30T17:28:21.087+07:00\",\n            \"updated_at\": \"2023-11-30T17:28:21.087+07:00\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by UUID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/:uuid",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								":uuid"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "tes",
+									"description": "search by name",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "49b9c590-4c67-4eb8-8243-69a7db20425c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Komputer Rizqi",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/rizqipm/Desktop/anak intern.jpeg"
+								},
+								{
+									"key": "file\n",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "test anak intern",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test anak intern",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/rizqipm/Desktop/anak intern.jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/products",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Nov 2023 07:51:31 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "277"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"uuid\": \"\",\n        \"name\": \"test anak intern\",\n        \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701244291/anak%20intern.jpg\",\n        \"AdminID\": 1,\n        \"Admin\": null,\n        \"variants\": null,\n        \"created_at\": \"2023-11-29T14:51:31.722+07:00\",\n        \"updated_at\": \"2023-11-29T14:51:31.722+07:00\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update by UUID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Komputer Emir",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/rizqipm/Desktop/kp3.jpeg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/:uuid",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								":uuid"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "tes",
+									"description": "search by name",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "bfcbf772-c45a-45b5-b7bc-38a0c360d4bc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update by UUID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "testing aja ganti image",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/rizqipm/Desktop/kp3.jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/products/:uuid",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										":uuid"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "tes",
+											"description": "search by name",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "49b9c590-4c67-4eb8-8243-69a7db20425c"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Nov 2023 16:43:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "593"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"uuid\": \"49b9c590-4c67-4eb8-8243-69a7db20425c\",\n        \"name\": \"testing aja ganti image\",\n        \"ImageUrl\": \"https://res.cloudinary.com/dikxnon7u/image/upload/v1701276219/BasicTradeAPI/kp3.jpg\",\n        \"AdminID\": 1,\n        \"Admin\": {\n            \"id\": 1,\n            \"uuid\": \"5d6a5db6-4825-4124-99bf-ea1a648e420e\",\n            \"name\": \"rizqi pm\",\n            \"email\": \"hi@rizqi.zip\",\n            \"password\": \"$2a$10$1jRqgnu9yugdIsBfcNxvgev.xQfNgsu9WMZxyadGDGREC67FKY82e\",\n            \"products\": null,\n            \"created_at\": \"2023-11-29T16:49:12.633+07:00\",\n            \"updated_at\": \"2023-11-29T16:49:12.633+07:00\"\n        },\n        \"variants\": [],\n        \"created_at\": \"2023-11-29T16:51:23.234+07:00\",\n        \"updated_at\": \"2023-11-29T23:43:39.853+07:00\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete by UUID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/:uuid",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								":uuid"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "tes",
+									"description": "search by name",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "4f36537c-8110-4ffa-a725-19077e70abaf"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "PING",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/ping/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ping",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhpQHJpenFpLnppcCIsImV4cCI6IjIwMjMtMTEtMzBUMTY6NDk6MTguNDg2MTY1KzA3OjAwIiwiaWQiOjF9.OgOQn8aaxkBF086epDysAcnAwtJNZKQgENVuLjroqa0"
+		}
+	]
+}
