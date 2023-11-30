@@ -5,8 +5,11 @@ import (
 	"final-project/helpers"
 	"final-project/models"
 	"fmt"
+	"math"
 	"mime/multipart"
 	"net/http"
+	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	jwt5 "github.com/golang-jwt/jwt/v5"
@@ -18,13 +21,47 @@ type ProductRequest struct {
 	Image *multipart.FileHeader `form:"file"`
 }
 
+type Pagination struct {
+	Limit    int
+	Offset   int
+	Page     int
+	LastPage int
+	Total    int
+}
+
 func GetProducts(ctx *gin.Context) {
-	// Todo: pagination
 	db := database.GetDB()
 
 	var products []models.Product
+	var total int64
+	var page int
+	var limit int
+	var err error
 
-	err := db.Preload("Admin").Preload("Variants").Find(&products).Error
+	s, searchExist := ctx.GetQuery("search")
+	p, pageExist := ctx.GetQuery("page")
+	if pageExist {
+		page, _ = strconv.Atoi(p)
+	} else {
+		// default
+		page = 1
+	}
+	l, limitExist := ctx.GetQuery("limit")
+	if limitExist {
+		limit, _ = strconv.Atoi(l)
+	} else {
+		// default
+		limit = 10
+	}
+
+	offset := (page - 1) * limit
+
+	if searchExist {
+		search := strings.Join([]string{"%", s, "%"}, "")
+		err = db.Model(&models.Product{}).Preload("Admin").Preload("Variants").Where("name LIKE ?", search).Count(&total).Limit(limit).Offset(offset).Order("created_at desc").Find(&products).Error
+	} else {
+		err = db.Model(&models.Product{}).Preload("Admin").Preload("Variants").Count(&total).Limit(limit).Offset(offset).Order("created_at desc").Find(&products).Error
+	}
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"error":   "Bad request",
@@ -33,7 +70,18 @@ func GetProducts(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{"data": products})
+	lastPage := int(math.Ceil(float64(total) / float64(limit)))
+	pagination := Pagination{
+		Limit:    limit,
+		Offset:   offset,
+		Page:     page,
+		LastPage: lastPage,
+		Total:    int(total),
+	}
+	ctx.JSON(http.StatusOK, gin.H{
+		"data":       products,
+		"pagination": pagination,
+	})
 }
 
 func CreateProduct(ctx *gin.Context) {

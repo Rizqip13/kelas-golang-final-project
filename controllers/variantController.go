@@ -4,7 +4,10 @@ import (
 	"final-project/database"
 	"final-project/models"
 	"fmt"
+	"math"
 	"net/http"
+	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	jwt5 "github.com/golang-jwt/jwt/v5"
@@ -18,12 +21,38 @@ type VariantRequest struct {
 }
 
 func GetVariants(ctx *gin.Context) {
-	// Todo: pagination
 	db := database.GetDB()
 
 	var variants []models.Variant
+	var total int64
+	var page int
+	var limit int
+	var err error
 
-	err := db.Preload("Product").Find(&variants).Error
+	s, searchExist := ctx.GetQuery("search")
+	p, pageExist := ctx.GetQuery("page")
+	if pageExist {
+		page, _ = strconv.Atoi(p)
+	} else {
+		// default
+		page = 1
+	}
+	l, limitExist := ctx.GetQuery("limit")
+	if limitExist {
+		limit, _ = strconv.Atoi(l)
+	} else {
+		// default
+		limit = 10
+	}
+
+	offset := (page - 1) * limit
+
+	if searchExist {
+		search := strings.Join([]string{"%", s, "%"}, "")
+		err = db.Model(&models.Variant{}).Preload("Product").Where("variant_name LIKE ?", search).Count(&total).Limit(limit).Offset(offset).Order("created_at desc").Find(&variants).Error
+	} else {
+		err = db.Model(&models.Variant{}).Preload("Product").Count(&total).Limit(limit).Offset(offset).Order("created_at desc").Find(&variants).Error
+	}
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"error":   "Bad request",
@@ -32,7 +61,17 @@ func GetVariants(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{"data": variants})
+	lastPage := int(math.Ceil(float64(total) / float64(limit)))
+	pagination := Pagination{
+		Limit:    limit,
+		Offset:   offset,
+		Page:     page,
+		LastPage: lastPage,
+		Total:    int(total),
+	}
+	ctx.JSON(http.StatusOK, gin.H{
+		"data":       variants,
+		"pagination": pagination})
 }
 
 func CreateVariant(ctx *gin.Context) {
